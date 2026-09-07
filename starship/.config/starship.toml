@@ -1,0 +1,130 @@
+# ~/.config/starship.toml
+
+format = """
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$aws\
+$nodejs\
+$python\
+$rust\
+$golang\
+$docker_context\
+$package\
+$line_break\
+$character"""
+
+# Right side of the prompt
+right_format = "$cmd_duration $time"
+
+add_newline = true
+command_timeout = 3000
+
+[character]
+success_symbol = "[->](bold #89b482)"
+error_symbol = "[->](bold #ea6962)"
+vicmd_symbol = "[❮](bold #d3869b)"
+
+[directory]
+style = "#7daea3 bold"  
+format = "[ ]($style)[$path]($style) "
+truncation_length = 3
+truncation_symbol = "…/"
+read_only = " "
+read_only_style = "#ea6962"
+
+[username]
+style_user = "#89b482 bold"
+style_root = "#ea6962 bold"
+format = '[\[$user\]]($style)' #Remove '\[' or '\]' if you do not want brackets
+show_always = true
+
+[hostname]
+format = "[@$hostname:](#89b482 bold)"
+ssh_only = false
+
+[git_branch]
+symbol = " "
+style = "#d3869b bold"
+format = '[$symbol$branch·]($style)'
+
+[git_status]
+style = "#d3869b bold"
+ahead = '⇡${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
+
+[git_commit]
+style = "#d3869b bold"
+commit_hash_length = 4
+tag_symbol = '🔖 '
+
+[git_state]
+style = "#d3869b bold"
+format = '\([$state( $progress_current of $progress_total)]($style)\) '
+
+[nodejs]
+symbol = "⬢ "
+style = "#89b482"
+format = "[$symbol($version)]($style) "
+
+[lua]
+format = 'via [🌕 $version](bold #7daea3) '
+
+[python]
+symbol = " "
+style = "#7daea3"
+format = "[$symbol($version)]($style) "
+pyenv_version_name = true
+detect_extensions = ['py']
+detect_files = ['.python-version', 'Pipfile', 'pyproject.toml', 'requirements.txt']
+
+[rust]
+symbol = "🦀 "
+style = "#ea6962"
+format = "[$symbol($version)]($style) "
+
+[golang]
+symbol = " "
+style = "#7daea3"
+format = "[$symbol($version)]($style) "
+
+[docker_context]
+symbol = "🐳 "
+style = "#7daea3 bold"
+format = "[$symbol$context]($style) "
+
+[terraform]
+format = '[🏎💨 $workspace]($style) '
+
+[aws]
+format = "on [$symbol($profile)(($region))]($style) "
+symbol = "  "
+style = "bold #d8a657"
+disabled = true
+[aws.region_aliases]
+ap-southeast-2 = 'au'
+us-east-1 = 'va'
+
+[azure]
+disabled = false
+format = "on [$symbol($username)]($style) "
+symbol = "󰠅 "
+style = "#7daea3 bold"
+
+[package]
+symbol = "📦 "
+style = "#d3869b bold"
+format = "[$symbol$version]($style) "
+
+[cmd_duration]
+min_time = 200
+format = '[\(⏱ $duration\)]($style) '
+style = "#d4be98 bold"
+
+[time]
+disabled = false
+time_format = "%T"
+format = "[$time]($style) "
+style = "bold #d3869b"
