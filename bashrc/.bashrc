@@ -63,13 +63,6 @@ if [ -f "$HOME/.local/bin/env" ]; then . "$HOME/.local/bin/env"; fi
 if [ -f "$HOME/google-cloud-sdk/path.bash.inc" ]; then . "$HOME/google-cloud-sdk/path.bash.inc"; fi
 if [ -f "$HOME/google-cloud-sdk/completion.bash.inc" ]; then . "$HOME/google-cloud-sdk/completion.bash.inc"; fi
 
-
-# Locale: want english with Swedish currency and metric measurements + ISO 8601 dates
-export LC_TIME="en_DK.UTF-8"
-export LC_MONETARY="sv_SE.UTF-8"
-export LC_MEASUREMENT="en_DK.UTF-8"
-export LC_NUMERIC="en_DK.UTF-8"
-
 # editor settings
 export EDITOR="nvim"
 export VISUAL="nvim"
