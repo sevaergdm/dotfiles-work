@@ -178,7 +178,7 @@ layout {
     // You can change how the focus ring looks.
     focus-ring {
         // Uncomment this line to disable the focus ring.
-        off
+        on
 
         // How many logical pixels the ring extends out from the windows.
         width 4
@@ -218,7 +218,7 @@ layout {
     border {
         // The settings are the same as for the focus ring.
         // If you enable the border, you probably want to disable the focus ring.
-        on
+        off
 
         width 4
         active-color "#e6c384"
@@ -341,6 +341,12 @@ window-rule {
     // You can get away with just app-id="wezterm" if you want.
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     default-column-width {}
+}
+
+window-rule {
+  match app-id="com.mitchellh.ghostty"
+  draw-border-with-background false
+  opacity 0.9
 }
 
 // Open the Firefox picture-in-picture player as floating by default.
