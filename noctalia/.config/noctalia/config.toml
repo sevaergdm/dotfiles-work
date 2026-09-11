@@ -120,12 +120,12 @@ transition          = ["fade", "wipe", "disc", "stripes", "zoom", "honeycomb"]
 transition_duration = 1500          # milliseconds
 edge_smoothness     = 0.3
 transition_on_startup = false       # animate the first wallpaper at shell startup (v4-style)
-directory           = "~/github.com/sevaergdm/dotfiles-work/noctalia/.config/noctalia/backgrounds/"              # empty = XDG Pictures directory
+directory           = "~/.config/noctalia/backgrounds/"              # empty = XDG Pictures directory
 directory_light     = ""            # optional day-mode directory
 directory_dark      = ""            # optional night-mode directory
 
 [wallpaper.default]
-path = "~/github.com/sevaergdm/dotfiles-work/noctalia/.config/noctalia/backgrounds/nature-of-fear.jpg"                            # optional initial/default wallpaper path
+path = "~.config/noctalia/backgrounds/nature-of-fear.jpg"                            # optional initial/default wallpaper path
 
 [wallpaper.automation]
 enabled                    = false
@@ -346,26 +346,26 @@ position           = "left"          # top | bottom | left | right
 thickness          = 25
 background_opacity = 0.0
 radius             = 0
-margin_ends        = 30
+margin_ends        = 10
 margin_edge        = 0
-padding            = 14
-widget_spacing     = 8
-scale              = 0.9
+padding            = 0
+widget_spacing     = 7
+scale              = 0.7
 font_scale         = 0.8            # text-only scale multiplier across widgets
 shadow             = true
 auto_hide          = false
 # smart_auto_hide    = false       # show when the active workspace is empty; hide when it has windows
 # show_on_workspace_switch = true   # with auto_hide: briefly reveal when the active workspace changes
 reserve_space      = true
-capsule            = false
-# capsule_fill     = "surface_variant"
-# capsule_radius   = 8.0            # omit/blank in Settings for automatic pill radius; 0.0 = square
-# capsule_opacity  = 1.0
-# capsule_border   = "outline"      # uncomment for a border on all widgets
+capsule            = true
+capsule_fill     = "surface_variant"
+capsule_radius   = 0.0            # omit/blank in Settings for automatic pill radius; 0.0 = square
+capsule_opacity  = 0.5
+capsule_border   = "outline"      # uncomment for a border on all widgets
 
-start  = ["launcher", "workspaces"]
+start  = ["launcher", "workspaces", "media"]
 center = ["clock"]
-end    = ["media", "tray", "notifications", "network", "bluetooth", "volume", "brightness", "battery", "control-center", "session"]
+end    = ["tray", "notifications", "network", "bluetooth", "volume", "brightness", "battery", "control-center", "session"]
 
 # Commands for the bar margin outside widget sections (dead zone):
 # [bar.main.dead_zone.actions]
