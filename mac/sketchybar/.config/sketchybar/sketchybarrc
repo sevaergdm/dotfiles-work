@@ -13,7 +13,11 @@ ITEM_DIR="$CONFIG_DIR/items"
 # If you are looking for other colors, see the color picker:
 # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-sketchybar --bar position=top --layer=top --display=all height=40 blur_radius=30 color=0x40000000
+# Keep height below where windows start, or windows cover the bar:
+#   - external monitors: aerospace.toml gaps.outer.top (30)
+#   - built-in display: macOS reserves 32pt for the notch/menu bar
+# 30 sits flush with windows on external monitors (2pt gap on the built-in).
+sketchybar --bar position=top display=all height=30 blur_radius=30 color=0x40000000
 
 ##### Changing Defaults #####
 # We now change some default values, which are applied to all further items.
@@ -105,12 +109,10 @@ sketchybar --add item clock right \
   --subscribe volume volume_change \
   --add item battery right \
   --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
-  --subscribe battery system_woke power_source_change \
-  #--add item swap right \
-  icon="" \
-  label.font="Hack Nerd Font:Italic:13.0" \
-  icon.color=0x44FFFFFF \
-  label.color=0x44FFFFFF
+  --subscribe battery system_woke power_source_change
+
+# wifi
+source "$ITEM_DIR/wifi.sh"
 
 sketchybar --add item keyboard right \
   --set keyboard \

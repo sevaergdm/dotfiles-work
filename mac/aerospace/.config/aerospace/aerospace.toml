@@ -1,6 +1,15 @@
 # Place a copy of this config to ~/.aerospace.toml
 # After that, you can edit ~/.aerospace.toml to your liking
 
+# Config version for compatibility and deprecations
+# See: https://nikitabobko.github.io/AeroSpace/guide#config-version
+config-version = 2
+
+# Workspaces that stay alive even when empty. Under config-version 1 these were
+# inferred from the bindings; v2 defaults to none, so list them explicitly.
+# sketchybar builds its workspace items from `aerospace list-workspaces`.
+persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
 # You can use it to add commands that run after AeroSpace startup.
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = ["exec-and-forget sketchybar"]
