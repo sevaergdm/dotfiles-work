@@ -3,3 +3,4 @@ window-padding-x = 10
 window-padding-y = 10
 font-family = "Iosevka Nerd Font Mono"
 window-decoration = false
+async-backend = epoll

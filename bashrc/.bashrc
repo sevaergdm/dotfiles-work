@@ -15,6 +15,29 @@ function y() {
   command rm -f -- "$tmp"
 }
 
+# caffeinate
+caffeinate() {
+  [ $# -eq 0 ] && set -- sleep infinity
+  systemd-inhibit --what=sleep:handle-lid-switch --who=caffeinate --why="$*" "$@"
+}
+
+caffeinate-bg() {
+  systemd-run --user --unit=caffeinate --description="caffeinate ${1:-until stopped}" \
+    systemd-inhibit --what=sleep:handle-lid-switch --who=caffeinate --why="${1:-until stopped}" sleep "${1:-infinity}"
+}
+
+decaf() {
+  systemctl --user stop caffeinate 2>/dev/null
+  local p
+  for p in $(pgrep -u "$USER" -x systemd-inhibit); do
+    tr '\0' ' ' < /proc/$p/cmdline | grep -q -- '--who=caffeinate' || continue
+    pkill -P "$p" -x sleep
+    kill "$p" 2>/dev/null
+  done
+  sleep 0.5
+  if systemd-inhibit --list --no-legend | grep -q caffeinate; then echo "decaf: still held"; else echo "decaf: no caffeinate locks"; fi
+}
+
 # History
 HISTCONTROL=ignoreboth # ignore duplicate lines and lines starting with space
 HISTSIZE=10000
@@ -70,6 +93,10 @@ export VISUAL="nvim"
 # uv
 export PATH="$HOME/.local/bin:$PATH"
 
+# updates
+up() { sudo apt update && sudo apt full-upgrade -y && nix profile upgrade --all; fwupdmgr get-updates; }
+
 PROMPT_COMMAND='history -a'
 # Prompt
 eval "$(starship init bash)"
+eval "$(direnv hook bash)"

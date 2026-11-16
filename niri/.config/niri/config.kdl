@@ -116,6 +116,17 @@ input {
     position x=1280 y=0
 }
 
+// Dell above the laptop, the laptop centred under it. Logical pixels: the Dell is 3440x1440 at scale 1,
+// the laptop 1440x960 at scale 2, so the laptop sits at x=(3440-1440)/2, y=1440.
+// The Dell is matched by make, model and serial, so it keeps its place on any USB-C port.
+output "Dell Inc. DELL P3425WE JG0YY54" {
+    position x=0 y=0
+}
+
+output "eDP-1" {
+    position x=1000 y=1440
+}
+
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://niri-wm.github.io/niri/Configuration:-Layout
@@ -413,7 +424,6 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
-    Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     Mod+Space hotkey-overlay-title="Open Noctalia launcher" { spawn-sh "noctalia msg panel-toggle launcher"; }
 
